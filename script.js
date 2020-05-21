@@ -49,12 +49,25 @@ function showHeatMap(data) {
   svg.append("g")
     .attr("id", "x-axis")
     .attr("transform", `translate(${paddingLeft}, ${h - paddingBottom})`)
-    .call(xAxis);
+    .call(xAxis)
+    .append("text")
+    .text("YEARS")
+    .attr("x", (w-paddingLeft-paddingRight)/2)
+    .attr("y", 50)
+    .attr("fill", "black")
+    .style("text-anchor", "middles")
+    .style("font-size", "18px");
 
   svg.append("g")
     .attr("id", "y-axis")
     .attr("transform", `translate(${paddingLeft}, ${0})`)
-    .call(yAxis);
+    .call(yAxis)
+    .append("text")
+    .text("MONTHS")
+    .attr("transform", `translate(${-70},${(h-paddingBottom)/2})rotate(-90)`)
+    .attr("fill", "black")
+    .style("text-anchor", "middle")
+    .style("font-size", "18px");
 
   const cellWidth = xScale(parseYear(1756)) - xScale(parseYear(1755));
   const cellHeight = yScale(parseMonth(2));
